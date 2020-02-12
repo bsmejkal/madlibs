@@ -42,6 +42,18 @@ def greet_person():
                            compliment=compliment)
 
 
+@app.route('/game')
+def show_madlib_form():
+    """"""
+    game = request.args.get("game")
+
+    if game:
+        return render_template("game.html")
+        print(game)
+    else:
+        return render_template("goodbye.html")
+
+
 if __name__ == '__main__':
     # Setting debug=True gives us error messages in the browser and also
     # "reloads" our web app if we change the code.
