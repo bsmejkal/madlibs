@@ -49,9 +49,27 @@ def show_madlib_form():
 
     if game:
         return render_template("game.html")
-        print(game)
+
     else:
         return render_template("goodbye.html")
+
+
+# this decorator assigns the route and passes it to the return statement below
+@app.route('/madlibs')
+def show_madlib():
+    """"""
+
+    moniker = request.args.get("person")
+    chroma = request.args.get("color")
+    thing = request.args.get("noun")
+    description = request.args.get("adjective")
+
+    # must pass variables made above as arguments.Match the html variable names
+    return render_template("madlibs.html",
+                           person=moniker,
+                           color=chroma,
+                           noun=thing,
+                           adjective=description)
 
 
 if __name__ == '__main__':
